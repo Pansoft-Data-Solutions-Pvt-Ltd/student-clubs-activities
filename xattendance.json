@@ -1,0 +1,36 @@
+{
+    "baselineTable": "spriden",
+    "extendedTableAPIName": "x-xtnd",
+    "extendedTableDescription": "Student Attendance",
+    "extendedTableName": "xtnd",
+    "id": "00000000-0000-0000-0000-000000000000",
+    "oneToManyRelationShip": "false",
+    "extendedColumns": [
+      {
+        "attributeDataLength": "19",
+        "attributeDataType": "numeric",
+        "attributeDisplay": "true",
+        "attributePrompt": "Student Id",
+        "attributeRequired": "true",
+        "columnBaseTable": "spriden_id",
+        "columnName": "xtnd_id"
+      },
+      {
+        "attributeDataLength": "20",
+        "attributeDataType": "varchar2",
+        "attributeDisplay": "true",
+        "attributePrompt": "Attendance Status",
+        "attributeRequired": "true",
+        "columnName": "xtnd_status"
+      },
+      {
+        "attributeDataLength": "24",
+        "attributeDataType": "varchar2",
+        "attributeDisplay": "true",
+        "attributePrompt": "Student Id",
+        "attributeRequired": "true",
+        "columnName": "xtnd_eid"
+      }
+    ]
+  }
+  

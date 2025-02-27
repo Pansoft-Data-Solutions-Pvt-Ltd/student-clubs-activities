@@ -3,11 +3,10 @@
 import React, { useCallback, useEffect, useState,useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
-import {Icon } from '@ellucian/ds-icons/lib';
+
 import {
     Button,
     CircularProgress,
-    IconButton,
     makeStyles,
     Snackbar,
     Table,
@@ -53,6 +52,20 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
+    },
+    headerImage: {
+        width: '100%',
+        height: '100px', // Set a fixed height for the header image
+        objectFit: 'cover',
+        borderTopLeftRadius: '4px',
+        borderTopRightRadius: '4px',
+        marginBottom: spacing40
+    },
+    listHeader: {
+        fontSize: '16px',
+        fontWeight: 'bold',
+        color: '#111827',
+        marginBottom: '16px'
     },
     addContactButtonBox: {
         display: 'flex',
@@ -191,6 +204,10 @@ function StudentClubs() {
 
         return (
             <div className={classes.root}>
+                <img src="https://images.stockcake.com/public/7/7/5/7755df8a-0677-4414-873f-f7d974f1ba1a_medium/online-registration-process-stockcake.jpg" 
+                    alt="Events Header"
+                    className={classes.headerImage}
+                />
                 <div className={classes.contentMessage}>
                     <Typography className={classes.message} variant="body1" component="div">
                         {intl.formatMessage({ id: 'StudentClubs.noClubs'})}
@@ -210,30 +227,19 @@ function StudentClubs() {
         return (
             <div className={classes.root}>
                 <div className={classes.content}>
+                    <img src="https://images.stockcake.com/public/7/7/5/7755df8a-0677-4414-873f-f7d974f1ba1a_medium/online-registration-process-stockcake.jpg" 
+                        alt="Events Header"
+                        className={classes.headerImage}
+                    />
                     <div className={classes.contactsTableBox}>
                         <Table className={classes.contactsTable} stickyHeader={true}>
                             <TableHead>
                                 <TableRow className={classes.leaveTableRow}>
                                     <TableCell align="left" padding={'none'}>
-                                        <Typography variant={'body2'} component={'div'}>
-                                            { 'The club activities you are member in the current term : '} { payload?.currentTerm}
+                                        <Typography className={classes.listHeader}>
+                                            { 'Registered Clubs in '} { payload?.Terms[0].desc}
                                         </Typography>
                                     </TableCell> 
-                                </TableRow>
-                                <TableRow className={classes.leaveTableRow}>
-                                    <TableCell align="left" padding={'none'}>{intl.formatMessage({id: 'StudentClubs.desc'})}</TableCell>                                   
-                                   
-                                    <TableCell align="right" padding={'none'}>
-                                        <IconButton
-                                            className={classes.addButton}
-                                            color="gray"
-                                            aria-label="Add"
-                                            onClick={() => onAddContact()}
-                                        >
-                                            <Icon name="add" />
-                                        </IconButton>
-                                    </TableCell>
-                                    
                                 </TableRow>
                             </TableHead>
 
@@ -254,6 +260,15 @@ function StudentClubs() {
                                 })}
                             </TableBody>
                         </Table>
+                        <div className={classes.addContactButtonBox}>
+                            <Button 
+                                color="primary"
+                                variant="contained"
+                                onClick={() => onAddContact()}
+                            >
+                                Explore Clubs
+                            </Button> 
+                        </div>
                     </div>
                 </div>
                 {editClubContext.show && (
